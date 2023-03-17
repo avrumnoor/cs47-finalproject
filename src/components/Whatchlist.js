@@ -1,4 +1,5 @@
-import React, { FC, useCallback, useState } from "react";
+// Code converted from tsx to js from: https://www.youtube.com/watch?v=x0E6Pb-T5dg&list=PLX6ZeEdLt8m00ktgYLQqQan-oF8ONHM7E&index=4&ab_channel=BetoMoedano
+import React, { useCallback } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { useDispatch } from "react-redux";
 import DraggableFlatList, {
@@ -8,7 +9,6 @@ import * as Haptics from "expo-haptics";
 
 import WatchlistItem from "./WhatchlistItem";
 import * as watchlistActions from "../store/actions/watchlist";
-import Coin from "../models/Coin";
 import Colors from "../constants/Colors";
 
 const Whatchlist = ({ coinData }) => {

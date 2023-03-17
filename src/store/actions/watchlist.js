@@ -1,8 +1,6 @@
-import { Action } from "redux";
-import { ThunkDispatch } from "redux-thunk";
+// Code converted from tsx to js from: https://www.youtube.com/watch?v=x0E6Pb-T5dg&list=PLX6ZeEdLt8m00ktgYLQqQan-oF8ONHM7E&index=4&ab_channel=BetoMoedano
 import Coin from "../../models/Coin";
 import cmpData from "../../data/CoinMarketCapData";
-import { WatchlistState } from "../reducers/watchlist";
 
 export const SET_WATCHLIST_DATA = "SET_WATCHLIST_DATA";
 
@@ -37,10 +35,10 @@ export const fetchCoinData = () => {
         );
       });
 
-    //   dispatch(undefined, {
-    //     type: SET_WATCHLIST_DATA,
-    //     coinData: coinData,
-    //   });
+      dispatch({
+        type: SET_WATCHLIST_DATA,
+        coinData: coinData,
+      });
     } catch (err) {
       console.log(err);
     }

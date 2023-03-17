@@ -26,7 +26,7 @@ const TabNavigator = () => {
   return (
     <TabBarNavigator.Navigator tabBar={(props) => <TabBar {...props} />}>
       <TabBarNavigator.Screen name="Home" component={HomeNavigator} />
-      <TabBarNavigator.Screen name="Portfolio" component={Portfolio} />
+      <TabBarNavigator.Screen name="Crypto Portfolio" component={Portfolio} />
       <TabBarNavigator.Screen name="Actions" component={Actions} />
       <TabBarNavigator.Screen name="Prices" component={Prices} />
       <TabBarNavigator.Screen name="Settings" component={Settings} />
