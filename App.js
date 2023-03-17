@@ -1,16 +1,21 @@
 import React from "react";
-import { Image, StyleSheet, View, SafeAreaView, Text } from "react-native";
+import { Provider } from "react-redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import ReduxThunk from "redux-thunk";
+
+import watchlistReducer from "./src/store/reducers/watchlist";
 import AppNavigator from "./src/navigation/AppNavigation";
 
-export default function App() {
-  return <AppNavigator />;
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
+const rootReducer = combineReducers({
+  watchlist: watchlistReducer,
 });
+
+const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
+
+export default function App() {
+  return (
+    <Provider store={store}>
+      <AppNavigator />
+    </Provider>
+  );
+}

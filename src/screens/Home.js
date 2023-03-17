@@ -7,10 +7,29 @@ import {
   SafeAreaView,
   Image,
   LogBox,
+  Button,
+  Pressable,
 } from "react-native";
 import Colors from "../constants/Colors";
+import { useSelector, useDispatch } from "react-redux";
+import Watchlist from "../components/Whatchlist";
+import * as watchlistActions from "../store/actions/watchlist";
 
 const Home = () => {
+  const watchlistData = useSelector((state) => state.watchlist.watchlistData);
+  const dispatch = useDispatch();
+
+  const loadData = () => {
+    try {
+      dispatch(watchlistActions.fetchCoinData());
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    loadData();
+  }, []);
+  console.log(watchlistData)
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={{ alignItems: "center" }}>
@@ -21,9 +40,12 @@ const Home = () => {
           }}
         />
         <Text style={styles.title}>Welcome to Cryptobox!</Text>
-        <Text style={styles.subtitle}>
-          Start building your crypto portfolio
-        </Text>
+        <Text style={styles.subtitle}>Join the Hype!</Text>
+        <Pressable style={styles.button}>
+          <Text style={styles.subtitle}>Get Started</Text>
+        </Pressable>
+        {/* <Button title="Get Started" onPress={() => console.log("Hi")} /> */}
+        <Watchlist coinData={watchlistData} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -50,6 +72,15 @@ const styles = StyleSheet.create({
     fontSize: 17,
     marginBottom: 24,
     color: Colors.subtitle,
+  },
+  button: {
+    backgroundColor: Colors.cbBlue,
+    borderRadius: 5,
+    width: 150,
+    alignItems: "center",
+    justifyContent: "center",
+    alignContent: "center",
+    alignSelf: "center",
   },
 });
 
